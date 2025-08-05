@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chúc mừng sinh nhật!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- MÀN HÌNH NHẬP MẬT KHẨU -->
+  <div id="password-screen">
+    <h2>🔒 Nhập mật khẩu để xem lời chúc</h2>
+    <input type="password" id="password" placeholder="Mật khẩu..." />
+    <button onclick="checkPassword()">Vào</button>
+    <div id="password-hint">💡 Gợi ý: ngày tháng năm sinh của bạn</div>
+    <div id="password-error">❌ Sai mật khẩu rồi bạn ơi!</div>
+  </div>
+
+  <!-- PHÁO HOA -->
+  <canvas id="fireworks"></canvas>
+
+  <!-- LỜI CHÚC SINH NHẬT -->
+  <div class="birthday-card" style="display:none;">
+    <h1>🎂 Chúc mừng sinh nhật! 🎉</h1>
+    <p class="message">
+      Chúc Khang bước sang tuổi 14 thật rực rỡ, học giỏi, vui vẻ và luôn luôn hạnh phúc!  
+      Mong rằng tuổi mới sẽ mang lại nhiều kỷ niệm tuyệt vời 💖.
+    </p>
+    <p class="age">🎈 Tuổi mới: <strong>14</strong> 🎈</p>
+    <div class="cake">
+      <div class="candle"></div>
+      <div class="layer layer1"></div>
+      <div class="layer layer2"></div>
+      <div class="layer layer3"></div>
+    </div>
+  </div>
+
+  <!-- NHẠC SINH NHẬT -->
+  <audio id="music" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- SCRIPT -->
+  <script src="fireworks.js"></script>
+  <script>
+    const correctPassword = "03082011"; // ✅ Mật khẩu đã đổi
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      if (input === correctPassword) {
+        document.getElementById("password-screen").style.display = "none";
+        document.querySelector(".birthday-card").style.display = "block";
+        document.getElementById("music").play();
+      } else {
+        document.getElementById("password-error").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
